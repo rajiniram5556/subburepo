@@ -1,0 +1,9 @@
+{
+	"name": "adfsubbu2021",
+	"location": "centralus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "9b99b78a-e6dc-401c-8f81-5dd7852d8787",
+		"tenantId": "74234919-587d-4928-8eef-235565242a2b"
+	}
+}
