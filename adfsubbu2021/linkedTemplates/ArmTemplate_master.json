@@ -1,0 +1,84 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "adfsubbu2021"
+		},
+		"AzureBlobStorage1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage1'"
+		},
+		"AzureBlobStorage2_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage2'"
+		},
+		"linked destnation1_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'linked destnation1'"
+		},
+		"linked source1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'linked source1'"
+		},
+		"linked destnation1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adfgen22021.dfs.core.windows.net"
+		},
+		"linkedserviceforcopy_sasUri": {
+			"type": "secureString",
+			"metadata": "Secure string for 'sasUri' of 'linkedserviceforcopy'"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "adfsubbu2021_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AzureBlobStorage1_connectionString": {
+						"value": "[parameters('AzureBlobStorage1_connectionString')]"
+					},
+					"AzureBlobStorage2_connectionString": {
+						"value": "[parameters('AzureBlobStorage2_connectionString')]"
+					},
+					"linked destnation1_accountKey": {
+						"value": "[parameters('linked destnation1_accountKey')]"
+					},
+					"linked source1_connectionString": {
+						"value": "[parameters('linked source1_connectionString')]"
+					},
+					"linked destnation1_properties_typeProperties_url": {
+						"value": "[parameters('linked destnation1_properties_typeProperties_url')]"
+					},
+					"linkedserviceforcopy_sasUri": {
+						"value": "[parameters('linkedserviceforcopy_sasUri')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
