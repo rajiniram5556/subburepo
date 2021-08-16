@@ -1,0 +1,22 @@
+{
+	"name": "destnation",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "linked destnation1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "diamonds",
+				"fileSystem": "ram"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
